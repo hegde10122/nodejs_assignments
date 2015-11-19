@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Javascript email validation</title>
+
+		<script type="text/javascript">
+				function validate(){
+
+				var address = document.getElementById("email").value;	
+               
+				var anonymousFunc = function (address1) {
+                    var regex1 = /(^[A-Za-z0-9._-]{4,64})+@([A-Za-z0-9-]{2,255})\.([a-zA-Z0-9.-]{2,7})/
+                    alert("The email address validity is "+regex1.test(address1));
+		};	
+                anonymousFunc(address);
+		}
+		</script>
+</head>
+
+<body>
+    <input type="text" id="email"/>
+    <input type="button" value="submit" onclick="validate()"/>
+</body>
+</html>
+
+<!-- 
+                    //var regex1 = /^([A-Za-z0-9._-])+@[A-Za-z0-9.-]+\.([A-Za-z]{2,4})$/;
+					//var regex1 = /([A-Za-z0-9._-]{4,64})+@[A-Za-z0-9-]+\./;
+                    //var regex2 = /[H-H]{,10}$/;
+                    //var regex0 = /[A-Za-z0-9._-]{4,64}/;
+                    //var regex1 = /@(?=[A-Za-z0-9-])[\.]{1}/;
+                    //var regex2 = new RegExp("^\[.]{1}$");
+                    //var regex2 = /^\[.]{1}$/;
+                    //var regex = new RegExp(regex0.source + regex1.source + regex2.source);
+                    //var regex = new RegExp(regex0.source + regex1.source);
+-->
+		

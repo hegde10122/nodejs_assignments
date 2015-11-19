@@ -1,0 +1,95 @@
+<!DOCTYPE hmtl>
+<html>
+
+<head>
+    <title>IIFE to validate print person details using iife</title>
+    
+    <h1>Assignment 4 - session 1</h1>
+    <script type="text/javascript">
+    
+        function validateForms(){
+            
+            var name1 = document.getElementById('name').value;
+            var city1 = document.getElementById('city').value;
+            var age1 = document.getElementById('age').value;
+            
+    <!-- iife-->        
+    (//iife begins
+	   function (name1,city1,age1) {
+               
+           function validateData(){//closure
+               
+            //name validation begins ------------------------------
+            if(name1.length==0)
+            {
+                alert("Name is compulsory");
+                return;
+            }
+            else if(name1.length > 0){
+                
+                var regexName=/^[a-zA-Z]{2,100}$/;
+                
+                if(regexName.test(name1) == false){
+                    alert("Name must be at least 2 characters long and must have only english alphabets");
+                    return;
+                }
+            }
+            //name validation ends------------------------------
+               
+            //city validation begins----------------------------------------
+            if(city1.length == 0){
+                 alert("City is compulsory");
+                return;
+            }
+            else if(city1.length > 0){
+                var regex1=/^[a-zA-Z]{2,100}$/;
+                if(false == regex1.test(city1)){
+                     alert("City is invalid");
+                    return;
+                }
+            }   
+            //city validation ends----------------------------------------   
+           
+            //age validation begins----------------------------------------
+            if(age1.length == 0){
+                 alert("Age is compulsory");
+                return;
+            }
+            else if(age1.length > 0){
+                
+                if(parseInt(age1)){
+                    if(!(age1 > 0 && age1 < 125)){
+                        alert("Age must be at least one year and less than 125 years");
+                        return;
+                    }
+                }
+                else{
+                    alert("Age is a number and must be at least one");
+                    return;
+                }
+            }   
+            //age validation ends----------------------------------------   
+               
+           alert("Name is "+name1+"\nCity is "+city1+"\nAge is "+age1);
+           };//closure ends
+           
+        return validateData();   
+	}
+	)(name1,city1,age1)//call the iife
+        }
+    </script>
+</head>
+    
+<body>
+    <div>
+        <input type="text" id="name" placeholder="Name*"/><br><br>
+        <input type="text" id="city" placeholder="City*"/><br><br>    
+        <input type="text" id="age" placeholder="Age*"/><br><br>
+        <input type="button" id="submit" value="submit" onclick="validateForms();"/><br><br>
+    </div>
+</body>    
+</html>
+
+<!-- 
+Write a IIFE that prints AGE NAME AND CITY of the Person.
+-->

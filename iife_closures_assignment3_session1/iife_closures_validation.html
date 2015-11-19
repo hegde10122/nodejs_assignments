@@ -1,0 +1,97 @@
+<!DOCTYPE hmtl>
+<html>
+
+<head>
+    <title>IIFE to validate form using closures</title>
+    
+    <script type="text/javascript">
+    
+        function validateForms(){
+            
+            var name1 = document.getElementById('name').value;
+            var email1 = document.getElementById('email').value;
+            var phone1 = document.getElementById('phone').value;
+            var address1 = document.getElementById('address').value;
+            
+    <!-- iife-->        
+    (//iife begins
+	   function (name1,email1,phone1,address1) {
+               
+           function validateData(){//closure
+               
+            //name validation begins ------------------------------
+            if(name1.length==0)
+            {
+                alert("Name is compulsory");
+                return;
+            }
+            else if(name1.length > 0){
+                
+                var regexName=/^[a-zA-Z]{2,100}$/;
+                
+                if(regexName.test(name1) == false){
+                    alert("Name must be at least 2 characters long and must have only english alphabets");
+                    return;
+                }
+            }
+            //name validation ends------------------------------
+               
+            //email validation begins----------------------------------------
+            if(email1.length == 0){
+                 alert("Email is compulsory");
+                return;
+            }
+            else if(email1.length > 0){
+                var regex1 = /(^[A-Za-z0-9._-]{4,64})+@([A-Za-z0-9-]{2,255})\.([a-zA-Z0-9.-]{2,7})$/
+                if(false == regex1.test(email1)){
+                     alert("Email is invalid");
+                    return;
+                }
+            }   
+            //email validation ends----------------------------------------   
+           
+            //phone validation begins----------------------------------------
+            if(phone1.length == 0){
+                 alert("10-digit Mobile Number is compulsory");
+                return;
+            }
+            else if(phone1.length > 0){
+                var regex2 = /(^[0-9]{10})$/
+				if(false == regex2.test(phone1)){
+                     alert("Mobile number must be 10-digits long");
+                    return;
+                }
+            }   
+            //phone validation ends----------------------------------------   
+
+            if(address1.length == 0){
+                address1 ="-----";
+            }   
+               
+           alert("Name is "+name1+"\nEmail address is "+email1+"\nPhone number is "+phone1+"\nAddress is "+address1);
+               
+           };//closure ends
+           
+        return validateData();   
+	}
+	)(name1,email1,phone1,address1)//call the iife
+        }
+    </script>
+</head>
+    
+<body>
+    <div>
+        <input type="text" id="name" placeholder="Name*"/><br><br>
+        <input type="text" id="email" placeholder="Email*"/><br><br>    
+        <input type="text" id="phone" placeholder="10-digit mobile*"/><br><br>
+        <input type="text" id="address" placeholder="Address"/><br><br>
+        <input type="button" id="submit" value="submit" onclick="validateForms();"/><br><br>
+    </div>
+</body>    
+</html>
+
+<!-- 
+Write an IIFE in which we have to validate the input provided from a form using closures. The form
+consists of name, email, phone, address in which name, email and phone number should not be left
+blank. Also validate that the given email is a valid email id using JavaScript.
+-->
