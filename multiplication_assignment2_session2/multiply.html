@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+    <title>Assignment 2 - Session 2</title>
+        
+    <script type="text/javascript">
+				function multiplyAll(){
+
+				var number = document.getElementById("numValue").value;	
+                 
+                    function outerFunc(param) {
+	                       function innerFunc(input) {
+		                  return input * param;
+                    }
+                        alert("The squared value result is "+ innerFunc(param));
+                    }
+
+                   if(number.length == 0){
+                 alert("Integer range expected is (0 to 9999999)");
+                return;
+            }
+            else if(number.length > 0){
+                var regex2 = /(^[0-9]{1,7})$/
+				if(false == regex2.test(number)){
+                     alert("Integer range expected is (0 to 9999999)");
+                    return;
+                }
+                
+                outerFunc(number);
+            }   
+                }
+         </script>
+    </head>
+<body>
+    
+<p>
+Write a closure in which outer function that has a parameter is used by inner function which also has a parameter. The operation performed by inner function is to return multiplication of both the parameters value. Call this closure function and alert the multiplication produced by the closure.
+</p>
+<br><br>
+        
+<input type="text" id="numValue" placeholder="Integer input*"/>
+<input type="button" value="submit" onclick="multiplyAll()"/>
+    
+</body>
+</html>
