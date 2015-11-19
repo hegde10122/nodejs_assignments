@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+<title>Calculator - assignment 2 - session 3</title>   
+    
+<script type="text/javascript">
+    
+    function calculator(){
+    
+        this.num1 = document.getElementById("firstInteger").value;
+        this.num2 = document.getElementById("secondInteger").value;
+    
+          //checking whether inputs are numbers
+          var check = checkNumber(num1);
+    
+        if(check == false)return; 
+        
+        check = checkNumber(num2);
+     
+        if(check == false)return;    
+        
+        add(num1,num2);
+        subtract(num1,num2);
+        mult(num1,num2);
+        divide(num1,num2);
+
+    }//function ends
+    
+    function checkNumber(number){
+        
+        if(number.length == 0){
+                 alert("Integer range expected is (0 to 9999999)");
+                 return false;
+            }
+        
+        var regex2 = /(^[0-9]{1,7})$/
+        
+        if(false == regex2.test(number)){
+                     alert("Integer range expected is (0 to 9999999)");
+                    return false;
+                }
+        
+        return true;
+    }//function ends
+    
+    
+    function add(num1,num2){
+        this.addition = Number(num1) + Number(num2);
+        console.log("Addition of "+ num1 +" and "+ num2 +" is "+addition);
+    }
+
+        function subtract(num1,num2){
+        this.subtraction = num1 - num2;
+        console.log("Subtraction of "+ num1 +" from "+ num2 +" is "+subtraction);
+    }
+
+        function mult(num1,num2){
+        
+        this.multiplication = num1 * num2;
+        console.log("Multiplication of "+ num1 +" and "+ num2 +" is "+multiplication);
+    }
+
+        function divide(num1,num2){
+        
+        if(parseInt(num2) === 0)    {
+            console.log("Division of "+ num1 +" by 0 not possible");
+            return;
+        }
+            
+        this.division = num1 / num2;
+        console.log("Division of "+ num1 +" by "+ num2 +" is "+division);
+    }
+
+</script>    
+</head>
+
+<body>
+    
+<p>Create two public variables and four functions add, subtract, multiply and divide which takes
+these two public variables<br>
+and perform their respective operations i.e. add, subtract, multiply and
+divide. These functions should also contain a private variable and alert them.
+</p><br><br>
+    
+<input type="text" placeholder="First Integer*" id="firstInteger"/><br><br>
+<input type="text" placeholder="Second Integer*" id="secondInteger"/><br><br>
+<input type="button" value="submit" onclick="calculator()"/>
+    
+</body>
+
+
+</html>
